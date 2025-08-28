@@ -1,6 +1,8 @@
 {
   "files.associations": {
+    "*.dbclient-js": "javascript",
     "*.embeddedhtml": "html",
+    "*.php": "php",
     "xstring": "cpp",
     "atomic": "cpp",
     "bit": "cpp",
@@ -44,7 +46,21 @@
     "xmemory": "cpp",
     "xstddef": "cpp",
     "xtr1common": "cpp",
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "array": "cpp",
+    "cstdarg": "cpp",
+    "cwctype": "cpp",
+    "deque": "cpp",
+    "unordered_map": "cpp",
+    "algorithm": "cpp",
+    "functional": "cpp",
+    "memory_resource": "cpp",
+    "numeric": "cpp",
+    "optional": "cpp",
+    "random": "cpp",
+    "string_view": "cpp",
+    "numbers": "cpp",
+    "sstream": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.cCompilerPath": "gcc",
