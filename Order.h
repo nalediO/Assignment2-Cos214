@@ -7,51 +7,30 @@
 #include <string>
 #include <vector>
 
+
 class Order{
     private:
-        std::vector<Pizza*> pizzas;
-        OrderState* state;
+        std::vector<Pizza*> items;
+        OrderState* currentState;
         DiscountStrategy* discountStrategy;
         double totalPrice;
     public:
-        Order(OrderState* initialState, DiscountStrategy* discountStrategy = nullptr);
+        Order();
         ~Order();
+
         void setState(OrderState* newState);
+        void processOrder();
         std::string getStateName();
-        void handleAction();
-        double calculateTotal()const;
+
         void setDiscountStrategy(DiscountStrategy* strategy);
+        double calculateTotal()const;
         double applyDiscount();
+        double getFinalTotal() const;
+
+        void addPizza(Pizza* pizza);
+        void displayOrder() const;
+
+
 
 };
 #endif /* ORDER_H */
-
-// #ifndef Order_h
-// #define Order_h
-
-// #include <string>
-// #include <DiscountStrategy.h>
-// #include <vector>
-// #include "Pizza.h"
-
-// class Order {
-
-// private:
-//     std::vector<Pizza*> pizzas;
-//     DiscountStrategy* discountStrategy;
-
-// public:
-
-//     Order(DiscountStrategy* strategy);
-//     ~Order();
-//     void addPizza(Pizza* pizza);
-//     void removePizza(Pizza* pizza);
-//     double calculateTotalPrice() const;
-//     double calculateOrderDiscount() const;
-//     int getPizzaCount() const;
-//     void setDiscountStrategy(DiscountStrategy* strategy);
-//     void displayOrder() const;
-
-// };
-
-// #endif /* Order_h */

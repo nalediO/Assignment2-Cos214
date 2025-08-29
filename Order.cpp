@@ -1,55 +1,82 @@
 #include "Order.h"
-#include <algorithm>
 #include <iostream>
+#include "OrderState.h"
 
-    Order::Order(DiscountStrategy* strategy){
-        this->discountStrategy = strategy;
-    };
-    Order::~Order(){
-        for (auto* pizza : pizzas) {
-            delete pizza; 
-        }
+Order::Order() : currentState(nullptr), discountStrategy(nullptr), totalPrice(0.0) {
+    std::cout << "Order created" << std::endl;
+    currentState=new PreparingState(); 
+}
+
+Order::~Order() {
+    std::cout << "Order destroyed" << std::endl;
+    for (auto& item : items) {
+        delete item;
+    }
+    delete currentState;
+    delete discountStrategy;
+}
+
+void Order::setState(OrderState* newState) {
+    if (currentState!=nullptr) {
+        delete currentState;
+    }
+    currentState = newState;
+}
+
+void Order::processOrder() {
+    if (currentState) {
+        currentState->handleAction(this);
+    } else {
+        std::cerr << "No current state set for the order." << std::endl;
+    }
+}
+
+std::string Order::getStateName() {
+    if (currentState) {
+        return currentState->getStateName();
+    }
+    return "No State";
+}
+
+void Order::setDiscountStrategy(DiscountStrategy* strategy) {
+    if (discountStrategy) {
         delete discountStrategy;
-    };
-    void Order::addPizza(Pizza* pizza){
-        pizzas.push_back(pizza);
-    };
-    void Order::removePizza(Pizza* pizza){
-        
-        auto it = std::find(pizzas.begin(), pizzas.end(), pizza);
-        if (it != pizzas.end()) {
-            pizzas.erase(it);
-        } else {
-            std::cerr << "Pizza not found in the order." << std::endl;
-        }
     }
-    double Order::calculateTotal() const{
-        double total = 0.0;
-        for (const auto& pizza : pizzas) {
-            total += pizza->getPrice();
-        }
-        return total;
+    discountStrategy = strategy;
+}
+
+double Order::calculateTotal() const {
+    double total = 0.0;
+    for (const auto& item : items) {
+        total += item->getPrice();
     }
-    double Order::calculateOrderDiscount() const{
-        double total = calculateTotalPrice();
-        if (discountStrategy) {
-            return discountStrategy->applyDiscount(total);
-        }
-        return 0.0; 
+    return total;
+}
+
+double Order::applyDiscount() {
+    if (discountStrategy) {
+        return discountStrategy->applyDiscount(calculateTotal());
     }
-    int Order::getPizzaCount() const{
-        return pizzas->size();
+    return calculateTotal();
+}
+
+double Order::getFinalTotal() const {
+    return totalPrice;
+}
+void Order::addPizza(Pizza* pizza) {
+
+    std::cout <<"\n======== Your Order ========\n"<< std::endl;
+    for(Pizza* p : items) {
+        p->printPizza();
+        std::cout << "Price: $" << p->getName()<<" R "<< pizza->getPrice() << std::endl;
     }
-    void Order::setDiscountStrategy(DiscountStrategy* strategy){
-        if (discountStrategy) {
-            delete discountStrategy; 
-        }
-        discountStrategy = strategy;
-    }
-    void Order::displayOrder() const{
-        std::cout << "Order Summary:" << std::endl;
-        std::cout << "Number of Pizzas: " << getPizzaCount() << std::endl;
-        std::cout << "Total Price: $" << calculateTotalPrice() << std::endl;
-        std::cout << "Discount: $" << calculateOrderDiscount() << std::endl;
-        std::cout << "Final Price: $" << (calculateTotalPrice() - calculateOrderDiscount()) << std::endl;
-    }
+    // items.push_back(pizza);
+    // totalPrice = applyDiscount();
+
+    std::cout << "\n============================\n"<< std::endl;
+    std::cout<<"Subtotal: R "<< (calculateTotal()-applyDiscount())<< std::endl;
+    std::cout<<"Discounted Total: R "<< applyDiscount() << std::endl;
+    std::cout<<"State: "<< getStateName() << std::endl;
+    std::cout <<"\n============================\n"<< std::endl;
+
+}
