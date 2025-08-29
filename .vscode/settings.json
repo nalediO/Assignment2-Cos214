@@ -1,7 +1,7 @@
 {
   "files.associations": {
-    "*.dbclient-js": "javascript",
     "*.embeddedhtml": "html",
+    "*.dbclient-js": "javascript",
     "*.php": "php",
     "xstring": "cpp",
     "atomic": "cpp",
@@ -60,7 +60,8 @@
     "random": "cpp",
     "string_view": "cpp",
     "numbers": "cpp",
-    "sstream": "cpp"
+    "sstream": "cpp",
+    "list": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.cCompilerPath": "gcc",
