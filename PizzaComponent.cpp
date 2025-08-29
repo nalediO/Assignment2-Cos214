@@ -2,7 +2,11 @@
 #include "PizzaComponent.h"
 #include <string>
 
-    std::string PizzaComponent::getName() {};
+    std::string PizzaComponent::getName() {
+        return "";
+    };
 
-    double PizzaComponent::getPrice(){}; 
+    double PizzaComponent::getPrice(){
+        return 0.0;
+    }; 
     PizzaComponent::~PizzaComponent() = default;

@@ -5,7 +5,10 @@
     ExtraCheese::ExtraCheese(Pizza* pizza)
     :PizzaDecorator(pizza),
     extraCheesePrice(1.50) {};
-    ExtraCheese::~ExtraCheese() = default;
+    ExtraCheese::~ExtraCheese(){
+        // delete pizza;
+        
+    };
     double ExtraCheese::getPrice() {
         return pizza->getPrice() + extraCheesePrice;
     };

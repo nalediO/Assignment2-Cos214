@@ -40,10 +40,10 @@ int main() {
     std::cout << "\nAfter Adding Extra Cheese:\n";
     pizza->printPizza();
 
-    delete cheese;
-    delete pepperoni;
-    delete mushrooms;
-    delete pizzaToppings;
-    delete pizza; 
+    // delete cheese;
+    // delete pepperoni;
+    // delete mushrooms;
+    // delete pizzaToppings;
+    // delete pizza; 
     return 0;
 }
