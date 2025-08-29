@@ -7,21 +7,30 @@
 #include <string>
 #include <vector>
 
+
 class Order{
     private:
         std::vector<Pizza*> items;
-        OrderState* state;
+        OrderState* currentState;
         DiscountStrategy* discountStrategy;
         double totalPrice;
     public:
-        Order(OrderState* initialState, DiscountStrategy* discountStrategy = nullptr);
+        Order();
         ~Order();
+
         void setState(OrderState* newState);
+        void processOrder();
         std::string getStateName();
-        void handleAction();
-        double calculateTotal();
+
         void setDiscountStrategy(DiscountStrategy* strategy);
+        double calculateTotal()const;
         double applyDiscount();
+        double getFinalTotal() const;
+
+        void addPizza(Pizza* pizza);
+        void displayOrder() const;
+
+
 
 };
 #endif /* ORDER_H */
