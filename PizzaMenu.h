@@ -5,7 +5,7 @@
 
 class PizzaMenu : public Menu {
     public:
-        PizzaMenu(Observer* obs, Pizza* p) : Menu(obs, p) {}
+        PizzaMenu()=default;
         void notifyObservers(std::string message) override;
 };
 
