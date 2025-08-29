@@ -9,7 +9,7 @@
 
 class Order{
     private:
-        std::vector<Pizza*> items;
+        std::vector<Pizza*> pizzas;
         OrderState* state;
         DiscountStrategy* discountStrategy;
         double totalPrice;
@@ -19,9 +19,39 @@ class Order{
         void setState(OrderState* newState);
         std::string getStateName();
         void handleAction();
-        double calculateTotal();
+        double calculateTotal()const;
         void setDiscountStrategy(DiscountStrategy* strategy);
         double applyDiscount();
 
 };
 #endif /* ORDER_H */
+
+// #ifndef Order_h
+// #define Order_h
+
+// #include <string>
+// #include <DiscountStrategy.h>
+// #include <vector>
+// #include "Pizza.h"
+
+// class Order {
+
+// private:
+//     std::vector<Pizza*> pizzas;
+//     DiscountStrategy* discountStrategy;
+
+// public:
+
+//     Order(DiscountStrategy* strategy);
+//     ~Order();
+//     void addPizza(Pizza* pizza);
+//     void removePizza(Pizza* pizza);
+//     double calculateTotalPrice() const;
+//     double calculateOrderDiscount() const;
+//     int getPizzaCount() const;
+//     void setDiscountStrategy(DiscountStrategy* strategy);
+//     void displayOrder() const;
+
+// };
+
+// #endif /* Order_h */
