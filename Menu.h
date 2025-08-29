@@ -4,16 +4,22 @@
 #include "Observer.h"
 #include "Pizza.h"
 #include <string>
+#include <list>
+#include <iostream>
 class Menu{
     private:
-        Observer* observer;
-        Pizza* pizza;
+        // Observer* observer;
+        std::list<Observer*> observer;
+        // Pizza* pizza;
+        std::list<Pizza*> pizza;
     public:
-        Menu(Observer* obs, Pizza* p) : observer(obs), pizza(p) {}
+        Menu();
+        ~Menu();
         void addObserver(Observer* obs);
         void removeObserver(Observer* obs);
         void addPizza(Pizza* p);
-        virtual void notifyObservers(std::string message);
+        void removePizza(Pizza* p);
+        virtual void notifyObservers(std::string message)=0;
 
 
 };
