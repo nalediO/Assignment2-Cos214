@@ -10,7 +10,7 @@ private:
     double extraCheesePrice;    
 public:
     ExtraCheese(Pizza* pizza);
-    ~ExtraCheese() override = default;
+    ~ExtraCheese() override;
     double getPrice() override;
     std::string getName() override;
     void printPizza() override;

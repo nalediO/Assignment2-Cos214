@@ -2,10 +2,7 @@
 #include "PizzaComponent.h"
 #include <iostream>
 
-    BassPizza::BassPizza(PizzaComponent* toppings, std::string name, double price)
-        : toppings(toppings), 
-        pizzaName(name), pizzaPrice(price) {};
-    
+    BassPizza::BassPizza(PizzaComponent* toppings, std::string name, double price): toppings(toppings),pizzaName(name), pizzaPrice(price) {};
     double BassPizza::getPrice() {
         return this->pizzaPrice + toppings->getPrice();
     };

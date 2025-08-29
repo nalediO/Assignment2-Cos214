@@ -1,8 +1,14 @@
 #include "Pizza.h"
 #include <iostream>
 
-    double Pizza::getPrice(){};
-    std::string Pizza::getName(){};
+    double Pizza::getPrice(){
+        return 0.0;
+    };
+    std::string Pizza::getName(){
+        return "";
+    };
+    void Pizza::printPizza(){
+        return;
 
-    void Pizza::printPizza(){};
+    };
     Pizza::~Pizza() = default;

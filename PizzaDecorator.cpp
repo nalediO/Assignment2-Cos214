@@ -5,7 +5,13 @@
 
     PizzaDecorator::PizzaDecorator(Pizza* pizza)
         : pizza(pizza) {};
-    PizzaDecorator::~PizzaDecorator() = default;
-    double PizzaDecorator::getPrice(){};
-    std::string PizzaDecorator::getName(){};
-    void PizzaDecorator::printPizza(){};
+    PizzaDecorator::~PizzaDecorator()= default;
+    double PizzaDecorator::getPrice(){
+        return 0.0;
+    };
+    std::string PizzaDecorator::getName(){
+        return "";
+    };
+    void PizzaDecorator::printPizza(){
+        return;
+    };

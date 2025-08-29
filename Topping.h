@@ -18,7 +18,7 @@ class Topping: public PizzaComponent {
 
         double getPrice()  override ;
 
-        ~Topping() override = default;
+        ~Topping() override;
 
 };
 

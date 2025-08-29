@@ -9,7 +9,7 @@ class StuffedCrust : public PizzaDecorator {
 
     public:
         StuffedCrust(Pizza* pizza);
-        ~StuffedCrust() override = default;
+        ~StuffedCrust() override;
 
         double getPrice() override;
         std::string getName() override;

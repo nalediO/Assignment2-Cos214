@@ -1,5 +1,5 @@
-#ifndef BAKINGSTATE_H
-#define BAKINGSTATE_H
+#ifndef backingstats_H
+#define balignstate_H
 
 #include "OrderState.h"
 
