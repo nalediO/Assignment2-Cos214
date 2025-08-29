@@ -3,8 +3,9 @@
 
 #include "Menu.h"
 class SpecialsMenu : public Menu {
+
     public:
-        SpecialsMenu(Observer* obs, Pizza* p) : Menu(obs, p) {}
+        SpecialsMenu();
         void notifyObservers(std::string message) override;
 };
 #endif /* SPECIALSMENU_H */

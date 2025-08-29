@@ -5,9 +5,7 @@
 
 class Customer : public Observer {
     public:
-        void update() override {
-            // Implementation of update method
-        }
+        void update(std::string message) override ;
 };
 
 #endif

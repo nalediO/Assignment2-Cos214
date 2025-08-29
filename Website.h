@@ -5,7 +5,7 @@
 
 class Website : public Observer {
     public:
-        void update() override ;
+        void update(std::string message) override ;
 };
 
 

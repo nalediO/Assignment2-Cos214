@@ -1,7 +1,7 @@
 {
   "files.associations": {
-    "*.dbclient-js": "javascript",
     "*.embeddedhtml": "html",
+    "*.dbclient-js": "javascript",
     "*.php": "php",
     "xstring": "cpp",
     "atomic": "cpp",

@@ -7,14 +7,15 @@
 #include <list>
 #include <iostream>
 class Menu{
-    private:
+    protected:
         // Observer* observer;
         std::list<Observer*> observer;
         // Pizza* pizza;
         std::list<Pizza*> pizza;
+        std::string name;
     public:
-        Menu();
-        ~Menu();
+        Menu(const std::string& name);
+        virtual ~Menu();
         void addObserver(Observer* obs);
         void removeObserver(Observer* obs);
         void addPizza(Pizza* p);

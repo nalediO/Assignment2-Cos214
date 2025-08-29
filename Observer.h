@@ -1,10 +1,12 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
 
+#include <string>
+
 class Observer {
     public:
-        Observer() = default; // Default constructor
-        virtual void update() = 0; // Pure virtual function
-        virtual ~Observer() = default; // Virtual destructor
+        Observer() = default; 
+        virtual void update(std::string message) = 0; 
+        virtual ~Observer() = default; 
 };
 #endif

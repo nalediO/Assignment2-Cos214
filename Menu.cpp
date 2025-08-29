@@ -1,11 +1,9 @@
 #include "Menu.h"
 
 
-Menu::Menu() {
-    this->observer = std::list<Observer*>();
-    this->pizza = std::list<Pizza*>();
-    std::cout << "Menu created" << std::endl;
+Menu::Menu(const std::string& name) : name(name) {
 }
+
 void Menu::addObserver(Observer* obs) {
     std::cout << "Observer added" << std::endl;
     this->observer.push_back(obs);
@@ -26,7 +24,7 @@ void Menu::removeObserver(Observer* obs) {
 void Menu::addPizza(Pizza* p) {
     std::cout << "Pizza added to menu: " << p->getName() << std::endl;
     this->pizza.push_back(p);
-    notifyObservers("New pizza added to menu: " + p->getName());
+    notifyObservers("New pizza added to menu: " + p->getName() + " to " + this->name);
 }
 
 void Menu::removePizza(Pizza* p) {
@@ -35,7 +33,7 @@ void Menu::removePizza(Pizza* p) {
         return;
     };
     this->pizza.remove(p);
-    notifyObservers("Pizza removed from menu: " + p->getName());
+    notifyObservers("Pizza removed from menu: " + p->getName() + " to " + this->name);
 }
 
 void Menu::notifyObservers(std::string message) {
