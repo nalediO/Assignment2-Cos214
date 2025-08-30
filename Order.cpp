@@ -32,7 +32,7 @@ void Order::processOrder() {
     }
 }
 
-std::string Order::getStateName() {
+std::string Order::getStateName()const {
     if (currentState) {
         return currentState->getStateName();
     }
@@ -54,7 +54,7 @@ double Order::calculateTotal() const {
     return total;
 }
 
-double Order::applyDiscount() {
+double Order::applyDiscount() const {
     if (discountStrategy) {
         return discountStrategy->applyDiscount(calculateTotal());
     }
@@ -66,18 +66,38 @@ double Order::getFinalTotal() const {
 }
 void Order::addPizza(Pizza* pizza) {
 
-    std::cout <<"\n======== Your Order ========\n"<< std::endl;
-    for(Pizza* p : items) {
-        p->printPizza();
-        std::cout << "Price: $" << p->getName()<<" R "<< pizza->getPrice() << std::endl;
-    }
-    // items.push_back(pizza);
-    // totalPrice = applyDiscount();
+    // std::cout <<"\n======== Your Order ========\n"<< std::endl;
+    // for(Pizza* p : items) {
+    //     p->printPizza();
+    //     std::cout << "Price: $" << p->getName()<<" R "<< pizza->getPrice() << std::endl;
+    // }
+    items.push_back(pizza);
+    totalPrice = applyDiscount();
 
-    std::cout << "\n============================\n"<< std::endl;
-    std::cout<<"Subtotal: R "<< (calculateTotal()-applyDiscount())<< std::endl;
-    std::cout<<"Discounted Total: R "<< applyDiscount() << std::endl;
-    std::cout<<"State: "<< getStateName() << std::endl;
-    std::cout <<"\n============================\n"<< std::endl;
+    // std::cout << "\n============================\n"<< std::endl;
+    // std::cout<<"Subtotal: R "<< (calculateTotal()-applyDiscount())<< std::endl;
+    // std::cout<<"Discounted Total: R "<< applyDiscount() << std::endl;
+    // std::cout<<"State: "<< getStateName() << std::endl;
+    // std::cout <<"\n============================\n"<< std::endl;
+
+}
+
+void Order::displayOrder() const {
+    if (items.empty()) {
+        std::cout << "Your order is empty." << std::endl;
+        return;
+    }
+    std::cout << "\n======== Your Order ========\n" << std::endl;
+    for (const auto& pizza : items) {
+        pizza->printPizza();
+        std::cout << "Price: R " << pizza->getPrice() << std::endl;
+
+    }
+    std::cout << "\n============================\n" << std::endl;
+    std::cout << "Subtotal: R " << calculateTotal() << std::endl;
+    std::cout << "Discounted Total: R " << applyDiscount() << std::endl;
+    std::cout << "State: " << getStateName() << std::endl;
+    std::cout << "\n============================\n" << std::endl;
+
 
 }

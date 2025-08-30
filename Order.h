@@ -20,11 +20,11 @@ class Order{
 
         void setState(OrderState* newState);
         void processOrder();
-        std::string getStateName();
+        std::string getStateName() const;
 
         void setDiscountStrategy(DiscountStrategy* strategy);
         double calculateTotal()const;
-        double applyDiscount();
+        double applyDiscount() const;
         double getFinalTotal() const;
 
         void addPizza(Pizza* pizza);

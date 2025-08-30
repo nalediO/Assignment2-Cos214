@@ -12,6 +12,8 @@
 #include "SpecialsMenu.h"
 #include "Customer.h"
 #include "Website.h"
+#include "Order.h"
+#include "concrateStates.h" 
 
 
 
@@ -22,7 +24,7 @@ int main() {
     PizzaComponent* cheese = new Topping("Cheese", 1.50);
     PizzaComponent* pepperoni = new Topping("Pepperoni", 2.00);
     PizzaComponent* mushrooms = new Topping("Mushrooms", 1.75);
-
+    Order* myOrder = new Order();
    
     ToppingGroup* pizzaToppings = new ToppingGroup("Pizza Toppings");
     
@@ -54,6 +56,19 @@ int main() {
     Pizza* vegetarian = new BassPizza(pizzaToppings, "Vegetarian", 13.99);
     Pizza* hawaiian = new BassPizza(pizzaToppings, "Hawaiian", 15.99);
 
+
+
+
+    myOrder->addPizza(margherita);
+    myOrder->addPizza(vegetarian);
+    myOrder->addPizza(hawaiian);
+
+
+
+
+
+    
+
     std::cout << "=== Adding Pizzas to Regular Menu ===\n";
     regularMenu.addPizza(margherita);
     regularMenu.addPizza(vegetarian);
@@ -80,6 +95,12 @@ int main() {
 
     std::cout << "\n=== Adding Observers ===\n";
     regularMenu.addObserver(&customer);
+
+     std::cout << "\n=== Orders ===\n";
+
+    
+    myOrder->displayOrder();
+
 
 
 
