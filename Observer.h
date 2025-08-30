@@ -5,8 +5,8 @@
 
 class Observer {
     public:
-        Observer() = default; 
+        Observer(); 
         virtual void update(std::string message) = 0; 
-        virtual ~Observer() = default; 
+        virtual ~Observer(); 
 };
 #endif
