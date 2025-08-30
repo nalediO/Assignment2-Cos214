@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-
+class OrderState;
 class Order{
     private:
         std::vector<Pizza*> items;
