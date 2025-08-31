@@ -11,6 +11,10 @@ void Menu::addObserver(Observer* obs) {
 
 Menu::~Menu() {
     std::cout << "Menu destroyed" << std::endl;
+
+    observer.clear();
+    pizza.clear();
+
 }
 
 void Menu::removeObserver(Observer* obs) {

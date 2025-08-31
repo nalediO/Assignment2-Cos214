@@ -17,5 +17,7 @@
     }
 
     BassPizza::~BassPizza() {
-        delete toppings; 
+        std::cout << "BassPizza destroyed" << std::endl;
+        // delete toppings;
+        // toppings=nullptr;
     }

@@ -8,9 +8,7 @@
 #include <iostream>
 class Menu{
     protected:
-        // Observer* observer;
         std::list<Observer*> observer;
-        // Pizza* pizza;
         std::list<Pizza*> pizza;
         std::string name;
     public:

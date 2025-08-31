@@ -6,7 +6,9 @@
     :PizzaDecorator(pizza),
     extraCheesePrice(1.50) {};
     ExtraCheese::~ExtraCheese(){
-        // delete pizza;
+        std::cout << "ExtraCheese decorator destroyed" << std::endl;
+        delete pizza;
+        pizza=nullptr;
         
     };
     double ExtraCheese::getPrice() {

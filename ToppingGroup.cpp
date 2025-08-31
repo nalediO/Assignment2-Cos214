@@ -48,5 +48,6 @@ double ToppingGroup::getPrice() {
 ToppingGroup::~ToppingGroup(){
     for(auto* topping : toppingsList) {
         delete topping; 
+        topping = nullptr;
     }
 }
