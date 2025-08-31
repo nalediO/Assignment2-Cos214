@@ -10,11 +10,20 @@ Order::Order() : currentState(nullptr), discountStrategy(nullptr), totalPrice(0.
 
 Order::~Order() {
     std::cout << "Order destroyed" << std::endl;
-    for (auto& item : items) {
-        delete item;
+    for (Pizza* p : items) {
+        if(p!=nullptr) {
+            std::cout << "Deleting pizza: " << p->getName() << std::endl;
+            delete p;
+            p=nullptr;
+        }
     }
+    // items.clear(); 
+
+    std::cout << "All pizzas in the order have been deleted." << std::endl;
     delete currentState;
+    currentState = nullptr;
     delete discountStrategy;
+    discountStrategy = nullptr;
 }
 
 void Order::setState(OrderState* newState) {

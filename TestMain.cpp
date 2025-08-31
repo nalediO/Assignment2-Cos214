@@ -55,6 +55,10 @@ int main() {
     Pizza* margherita = new BassPizza(pizzaToppings,"Margherita", 12.99);
     Pizza* vegetarian = new BassPizza(pizzaToppings, "Vegetarian", 13.99);
     Pizza* hawaiian = new BassPizza(pizzaToppings, "Hawaiian", 15.99);
+    Pizza* extraCheesePizza = new ExtraCheese(new BassPizza(pizzaToppings, "Extra Cheese Pizza", 14.99));
+    extraCheesePizza->getName();
+    extraCheesePizza->getPrice();
+    extraCheesePizza->printPizza();
 
 
 
@@ -62,12 +66,13 @@ int main() {
     myOrder->addPizza(margherita);
     myOrder->addPizza(vegetarian);
     myOrder->addPizza(hawaiian);
+    myOrder->addPizza(extraCheesePizza);
 
 
 
 
 
-    
+
 
     std::cout << "=== Adding Pizzas to Regular Menu ===\n";
     regularMenu.addPizza(margherita);
@@ -81,6 +86,9 @@ int main() {
 
     Customer customer;
     Website website;
+
+    customer.update("Welcome to the Pizza Shop!");
+    website.update("Welcome to the Pizza Shop!");
 
     std::cout << "\n=== Adding Observers ===\n";
     regularMenu.addObserver(&customer);
@@ -99,6 +107,18 @@ int main() {
      std::cout << "\n=== Orders ===\n";
 
     
+     std::cout << "Processing order...\n";
+    myOrder->processOrder();
+    myOrder->displayOrder();
+    
+
+    myOrder->processOrder();
+    myOrder->displayOrder();
+
+    myOrder->processOrder();
+    myOrder->displayOrder();
+
+    myOrder->processOrder();
     myOrder->displayOrder();
 
 
@@ -108,10 +128,18 @@ int main() {
 
 
 
-    // delete cheese;
-    // delete pepperoni;
-    // delete mushrooms;
-    // delete pizzaToppings;
-    // delete pizza; 
+
+
+    cout << "Final State of the Order: "<< 
+    myOrder->getStateName()
+    << endl;
+    delete myOrder;    myOrder=nullptr;
+    
+    delete pizza; 
+    delete pizzaToppings; 
+    
+
+    pizza=nullptr;
+
     return 0;
 }
